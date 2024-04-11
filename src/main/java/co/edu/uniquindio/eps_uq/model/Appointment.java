@@ -1,5 +1,6 @@
 package co.edu.uniquindio.eps_uq.model;
 
+import java.time.Duration;
 import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
@@ -19,6 +20,7 @@ public class Appointment {
 	private PriorityLevel priorityLevel;
 	private Doctor doctor;
 	private String detail;
+	private Duration duration;
 	
 	
 }

@@ -1,6 +1,6 @@
 package co.edu.uniquindio.eps_uq.model;
 
-import java.time.LocalDate;
+import java.time.Duration;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,11 +15,11 @@ public class Request implements Comparable<Request>{
 	private String id;
 	
 	
-	private LocalDate date;
 	private User user;
 	private PriorityLevel priorityLevel;
 	private Doctor doctor;
 	private String detail;
+	private Duration duration;
 	@Override
 	public int compareTo(Request o) {
 		return this.priorityLevel.getValue()-o.priorityLevel.getValue();
