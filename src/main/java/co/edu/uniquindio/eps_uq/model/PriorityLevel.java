@@ -6,25 +6,25 @@ import lombok.Getter;
 
 @AllArgsConstructor
 public enum PriorityLevel {
-	HIGH("High"), MEDIUM("Medium"), LOW ("Low");
+	HIGH(3), MEDIUM(2), LOW (2);
 	
 	@Getter
-	private String text;
+	private int value;
 	
-	public static String [] textValues(){
+	public static int [] intValues(){
 		PriorityLevel [] values= values();
-		String [] textValues= new String [values.length];
+		int [] textValues= new int [values.length];
 		for(int i =0; i< values.length;i++) {
-			textValues[i]= values[i].getText();
+			textValues[i]= values[i].getValue();
 		}
 		return textValues;
 		
 	}
 	
-	public PriorityLevel valueByText(String text) {
+	public PriorityLevel valueByIntValue(int value) {
 		PriorityLevel [] values= values();
 		for(PriorityLevel level: values) {
-			if(level.getText().equals(text))
+			if(level.getValue()==value)
 				return level;
 		}
 		return null;
