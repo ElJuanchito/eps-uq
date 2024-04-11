@@ -1,0 +1,33 @@
+.button {
+	-fx-border-width: 0;
+	-fx-background-color: #e0e1e5;
+	-fx-font-weight: bold;
+	-fx-pref-width: 100;
+	-fx-pref-height: 30;
+	-fx-background-radius: 10;
+}
+
+.icon-button {
+	-fx-max-width: 30;
+}
+
+
+.button:hover {
+	-fx-background-color: #d8d9dF;
+}
+
+.button:pressed {
+	-fx-background-color: #d0d1d5;
+}
+
+.red-button {
+	-fx-background-color: red;
+}
+
+.red-button:hover {
+	-fx-background-color: #d00000;
+}
+
+.header {
+	-fx-padding: 10;
+}

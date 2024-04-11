@@ -1,0 +1,10 @@
+.card-button{
+    -fx-background-color: white;
+}
+.card-button:hover{
+    -fx-background-color: #f1f4f5;
+}
+
+.card-button:pressed{
+    -fx-background-color: #e1e4e5;
+}
