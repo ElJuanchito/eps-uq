@@ -1,8 +1,8 @@
 package co.edu.uniquindio.eps_uq.model;
 
-import co.edu.uniquindio.eps_uq.structures.ProrityQueue;
-import listas.LinkedList;
-import listas.SimpleList;
+import co.edu.uniquindio.eps_uq.structures.LinkedList;
+import co.edu.uniquindio.eps_uq.structures.PriorityQueue;
+import co.edu.uniquindio.eps_uq.structures.SimpleList;
 
 import java.time.LocalDate;
 import java.util.UUID;
@@ -12,13 +12,13 @@ public class Eps {
     private final LinkedList<User> usersList;
     private final LinkedList<Doctor> doctorsList;
     private final LinkedList<Appointment> appointments;
-    private final ProrityQueue<Request> requestsQueue;
+    private final PriorityQueue<Request> requestsQueue;
 
     public Eps() {
         usersList = new SimpleList<>();
         doctorsList = new SimpleList<>();
         appointments = new SimpleList<>();
-        requestsQueue = new ProrityQueue<>();
+        requestsQueue = new PriorityQueue<>();
     }
 
     public void addUser(User user) {
