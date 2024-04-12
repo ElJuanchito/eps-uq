@@ -20,17 +20,17 @@ public class PriorityQueue<T extends Comparable<T>> implements Iterable<T>{
     public void Enqueue(T element) {
         var node = new Node(element);
         if(head == null || element.compareTo(head.value) > 0){
-            node.next = node;
+            node.next = head;
             head = node;
+            size ++;
+	        return;
         }
-        else {
-            Node current = head;
-            while(current.next != null && element.compareTo(current.next.value) > 0){
-                current = current.next;
-            }
-            node.next = current.next;
-            current.next = node;
+        Node current = head;
+        while(current.next != null && element.compareTo(current.next.value) < 0){
+            current = current.next;
         }
+        node.next = current.next;
+        current.next = node;
         size ++;
     }
 

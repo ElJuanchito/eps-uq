@@ -7,7 +7,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public enum PriorityLevel {
-	HIGH(3), MEDIUM(2), LOW (2);
+	HIGH(3), MEDIUM(2), LOW (1);
 	
 	private int value;
 	
