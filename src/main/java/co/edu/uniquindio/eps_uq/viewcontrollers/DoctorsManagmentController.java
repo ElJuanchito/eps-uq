@@ -31,8 +31,12 @@ public class DoctorsManagmentController {
 
     @FXML
     void agregarDoctorEvent(ActionEvent event) {
-    	ModelFactoryController.getInstance().addDoctor(txtIdDoctor.getText(),txtNombreDoctor.getText());
+    	addDoctorAction();
     	
     }
+
+	private void addDoctorAction() {
+		ModelFactoryController.getInstance().addDoctor(txtIdDoctor.getText(),txtNombreDoctor.getText());
+	}
 
 }
