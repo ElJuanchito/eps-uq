@@ -1,5 +1,6 @@
 package co.edu.uniquindio.eps_uq.model;
 
+import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDate;
 
@@ -12,7 +13,11 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(onlyExplicitlyIncluded =true)
 @AllArgsConstructor
 @Builder
-public class Appointment implements Comparable<Appointment>{
+public class Appointment implements Comparable<Appointment>, Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@EqualsAndHashCode.Include
 	private String id;
 	private LocalDate date;

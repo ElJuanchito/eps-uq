@@ -8,7 +8,7 @@ import java.io.ObjectOutputStream;
 import co.edu.uniquindio.eps_uq.model.Eps;
 
 public class EpsDao {
-	private static final String ROUTE = "/data/eps.dat";
+	private static final String ROUTE = "src/main/resources/data/eps.dat";
 
 	public static Eps load() {
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(ROUTE))) {
@@ -24,6 +24,7 @@ public class EpsDao {
 		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(ROUTE))) {
 			oos.writeObject(eps);
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 
 	}

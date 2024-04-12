@@ -1,5 +1,6 @@
 package co.edu.uniquindio.eps_uq.model;
 
+import java.io.Serializable;
 import java.time.Duration;
 
 import lombok.AllArgsConstructor;
@@ -13,8 +14,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Request implements Comparable<Request>{
+public class Request implements Comparable<Request>, Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@EqualsAndHashCode.Include
 	private String id;
 	private User user;
