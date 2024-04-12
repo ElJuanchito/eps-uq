@@ -1,11 +1,13 @@
 package co.edu.uniquindio.eps_uq.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@AllArgsConstructor
 @Builder
 public class User implements Comparable<User> {
 
