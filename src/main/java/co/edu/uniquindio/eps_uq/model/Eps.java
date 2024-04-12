@@ -48,15 +48,15 @@ public class Eps {
     }
 
     public void addRequest(Request request){
-        requestsQueue.Enqueue(request);
+        requestsQueue.enqueue(request);
     }
 
     public Request processRequest(Request request){
-        return requestsQueue.Dequeue();
+        return requestsQueue.dequeue();
     }
 
     public Appointment processAppointment(LocalDateTime date) {
-        Appointment appointment = mapRequestToAppointment(requestsQueue.Dequeue());
+        Appointment appointment = mapRequestToAppointment(requestsQueue.dequeue());
         appointment.setDate(date.toLocalDate());
         appointments.addTail(appointment);
         appointments.sort();

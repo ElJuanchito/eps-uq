@@ -17,16 +17,16 @@ public class PriorityQueue<T extends Comparable<T>> implements Iterable<T>{
         }
     }
 
-    public void Enqueue(T element) {
+    public void enqueue(T element) {
         var node = new Node(element);
         if(head == null || element.compareTo(head.value) > 0){
             node.next = head;
             head = node;
             size ++;
-	        return;
+            return;
         }
         Node current = head;
-        while(current.next != null && element.compareTo(current.next.value) < 0){
+        while(current.next != null && element.compareTo(current.next.value) <= 0){
             current = current.next;
         }
         node.next = current.next;
@@ -34,7 +34,7 @@ public class PriorityQueue<T extends Comparable<T>> implements Iterable<T>{
         size ++;
     }
 
-    public T Dequeue() {
+    public T dequeue() {
         if(head == null) throw new NoSuchElementException("Queue is empty");
         T request = head.value;
         head = head.next;
@@ -46,35 +46,52 @@ public class PriorityQueue<T extends Comparable<T>> implements Iterable<T>{
         return head == null;
     }
 
-    @Override
-	public Iterator<T> iterator(){
-		return new PriorityQueueIterator(head, size);
-	}
-    
-    private class PriorityQueueIterator implements Iterator<T>{
-    	private Node current;
-    	private int i;
-		private final int size;
-    	
-    	private PriorityQueueIterator (Node head, int size) {
-    		this.current= head;
-    		this.size = size;
-    	}
-		@Override
-		public boolean hasNext() {
-			return i<size;
-		}
+    public void print() {
+        if (isEmpty()) {
+            System.out.println("La lista está vacía");
+            return;
+        }
 
-		@Override
-		public T next() {
-			if(!hasNext()) {
-				throw new NoSuchElementException("No hay mas elementos a iterar");
-			}
-			T value= current.value;
-			current=current.next;
-			i++;
-			return value;
-		}
-    
+        Node current = head;
+        while (current != null) {
+            System.out.print(current.value);
+            if (current.next != null) {
+                System.out.print(" -> ");
+            }
+            current = current.next;
+        }
+        System.out.println();
+    }
+
+    @Override
+    public Iterator<T> iterator(){
+        return new PriorityQueueIterator(head, size);
+    }
+
+    private class PriorityQueueIterator implements Iterator<T>{
+        private Node current;
+        private int i;
+        private final int size;
+
+        private PriorityQueueIterator (Node head, int size) {
+            this.current= head;
+            this.size = size;
+        }
+        @Override
+        public boolean hasNext() {
+            return i<size;
+        }
+
+        @Override
+        public T next() {
+            if(!hasNext()) {
+                throw new NoSuchElementException("No hay mas elementos a iterar");
+            }
+            T value= current.value;
+            current=current.next;
+            i++;
+            return value;
+        }
+
     }
 }
