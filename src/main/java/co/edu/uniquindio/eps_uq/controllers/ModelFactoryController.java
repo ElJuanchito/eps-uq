@@ -57,6 +57,15 @@ public class ModelFactoryController {
 				.doctor(doctor).detail(detail).build();
 		eps = load();
 		eps.addRequest(request);
+		save(eps);
 
 	}
+	
+	public void addDoctor(String id,String nombre) {
+		Doctor doctor= Doctor.builder().id(id).nombre(nombre).build();
+		eps= load();
+		eps.addDoctor(doctor);
+		save(eps);
+	}
+	
 }

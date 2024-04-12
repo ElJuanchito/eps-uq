@@ -1,5 +1,7 @@
 package co.edu.uniquindio.eps_uq.viewcontrollers;
 
+import co.edu.uniquindio.eps_uq.controllers.ModelFactoryController;
+import co.edu.uniquindio.eps_uq.model.Doctor;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,13 +15,13 @@ public class DoctorsManagmentController {
     private Button btnAgregarDoctor;
 
     @FXML
-    private TableColumn<?, ?> colIdDoctor;
+    private TableColumn<Doctor, String> colIdDoctor;
 
     @FXML
-    private TableColumn<?, ?> colNombreDoctor;
+    private TableColumn<Doctor, String> colNombreDoctor;
 
     @FXML
-    private TableView<?> tblDoctores;
+    private TableView<Doctor> tblDoctores;
 
     @FXML
     private TextField txtIdDoctor;
@@ -29,7 +31,8 @@ public class DoctorsManagmentController {
 
     @FXML
     void agregarDoctorEvent(ActionEvent event) {
-
+    	ModelFactoryController.getInstance().addDoctor(txtIdDoctor.getText(),txtNombreDoctor.getText());
+    	
     }
 
 }
