@@ -10,10 +10,9 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefWidth="57.0" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.eps_uq.viewcontrollers.RequestCardController">
+<AnchorPane prefHeight="60.0" prefWidth="362.0" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.eps_uq.viewcontrollers.RequestCardController">
    <children>
-      <BorderPane onMouseClicked="#cardClickedEvent" prefHeight="60.0" prefWidth="362.0" styleClass="card-button" stylesheets="@../styles/card.css">
+      <BorderPane onMouseClicked="#cardClickedEvent" styleClass="card-button" stylesheets="@../styles/card.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
             <VBox BorderPane.alignment="CENTER">
                <children>
@@ -22,7 +21,7 @@
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Label>
-                  <Label layoutX="10.0" layoutY="28.0" text="Tiempo de Consulta" />
+                  <Label fx:id="lblTiempo" layoutX="10.0" layoutY="28.0" text="Tiempo de Consulta" />
                </children>
             </VBox>
          </center>
@@ -30,7 +29,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
          <left>
-            <Label prefWidth="30.0" text="3" BorderPane.alignment="CENTER">
+            <Label fx:id="lblPrior" prefWidth="30.0" text="3" BorderPane.alignment="CENTER">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>

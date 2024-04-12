@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -9,8 +10,7 @@
 <?import javafx.scene.shape.SVGPath?>
 <?import javafx.scene.text.Font?>
 
-
-<StackPane xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.eps_uq.viewcontrollers.MainMenuController">
+<StackPane style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.eps_uq.viewcontrollers.MainMenuController">
    <children>
       <BorderPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/main.css">
          <top>
@@ -50,6 +50,18 @@
          </top>
          <center>
             <BorderPane fx:id="centerPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </center>
+      </BorderPane>
+      <BorderPane fx:id="secondLayer" disable="true" opacity="0.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #00000055;">
+         <center>
+            <BorderPane fx:id="secondLayerInner" prefWidth="300.0" style="-fx-background-color: white; -fx-background-radius: 10;" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </BorderPane.margin>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </BorderPane>
          </center>
       </BorderPane>
    </children>
