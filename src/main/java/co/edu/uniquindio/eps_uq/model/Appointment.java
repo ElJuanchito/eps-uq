@@ -8,28 +8,21 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(onlyExplicitlyIncluded =true)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @AllArgsConstructor
-public class Appointment implements Comparable<Appointment>{
+public class Appointment implements Comparable<Appointment> {
 	@EqualsAndHashCode.Include
 	private Long id;
-	
-	
+
 	private LocalDate date;
 	private User user;
 	private PriorityLevel priorityLevel;
 	private Doctor doctor;
 	private String detail;
-<<<<<<< Updated upstream
 	private Duration duration;
-	
-	
-=======
-
 
 	@Override
 	public int compareTo(Appointment appointment) {
 		return id.compareTo(appointment.getId());
 	}
->>>>>>> Stashed changes
 }
