@@ -4,16 +4,17 @@ import java.time.Duration;
 import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(onlyExplicitlyIncluded =true)
 @AllArgsConstructor
-public class Appointment implements Comparable<Appointment> {
+@Builder
+public class Appointment implements Comparable<Appointment>{
 	@EqualsAndHashCode.Include
-	private Long id;
-
+	private String id;
 	private LocalDate date;
 	private User user;
 	private PriorityLevel priorityLevel;
@@ -23,6 +24,6 @@ public class Appointment implements Comparable<Appointment> {
 
 	@Override
 	public int compareTo(Appointment appointment) {
-		return id.compareTo(appointment.getId());
+		return date.compareTo(appointment.getDate());
 	}
 }
