@@ -1,15 +1,16 @@
 package co.edu.uniquindio.eps_uq.structures;
 
+import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class ProrityQueue<T extends Comparable<T>> {
+public class PriorityQueue<T extends Comparable<T>> implements Iterable<T>{
 
-    private Node<T> head;
+    private Node head;
     private int size = 0;
 
-    private class Node<T>{
+    private class Node {
         T value;
-        Node<T> next;
+        Node next;
 
         Node(T element){
             this.value = element;
@@ -17,14 +18,14 @@ public class ProrityQueue<T extends Comparable<T>> {
     }
 
     public void Enqueue(T element) {
-        var node = new Node<T>(element);
+        var node = new Node(element);
         if(head == null || element.compareTo(head.value) > 0){
             node.next = node;
             head = node;
         }
         else {
-            Node<T> current = head;
-            while(current.next != null && element.compareTo(current.next.value) <= 0){
+            Node current = head;
+            while(current.next != null && element.compareTo(current.next.value) > 0){
                 current = current.next;
             }
             node.next = current.next;
@@ -45,7 +46,8 @@ public class ProrityQueue<T extends Comparable<T>> {
         return head == null;
     }
 
-    public T peek(){
-        return head.value;
-    }
+    @Override
+	public Iterator<T> iterator(){
+		return null;
+	}
 }
