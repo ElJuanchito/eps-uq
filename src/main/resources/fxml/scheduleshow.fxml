@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.eps_uq.viewcontrollers.ScheduleShowController">
+   <top>
+      <Label text="Cronograma" BorderPane.alignment="CENTER" />
+   </top>
+   <center>
+      <ScrollPane fitToWidth="true" BorderPane.alignment="CENTER">
+         <content>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Cronograma Disponible" />
+                  <TableView fx:id="tblAppointments" prefHeight="200.0" prefWidth="200.0">
+                    <columns>
+                      <TableColumn fx:id="colIdAppointment" prefWidth="75.0" text="Id" />
+                      <TableColumn fx:id="colNombreUserAppointment" prefWidth="75.0" text="Nombre" />
+                        <TableColumn fx:id="colDateAppointment" prefWidth="75.0" text="Fecha" />
+                        <TableColumn fx:id="colPriorityAppointment" prefWidth="75.0" text="Prioridad" />
+                        <TableColumn fx:id="colDoctorAppointment" prefWidth="75.0" text="Doctor" />
+                        <TableColumn fx:id="colIDurationAppointment" prefWidth="75.0" text="Duracion" />
+                        <TableColumn fx:id="colDetailAppointment" prefWidth="75.0" text="Detalle" />
+                    </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
+               </children>
+            </VBox>
+         </content>
+      </ScrollPane>
+   </center>
+</BorderPane>

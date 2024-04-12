@@ -7,6 +7,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.UUID;
 
+import co.edu.uniquindio.eps_uq.model.Appointment;
 import co.edu.uniquindio.eps_uq.model.Doctor;
 import co.edu.uniquindio.eps_uq.model.Eps;
 import co.edu.uniquindio.eps_uq.model.PriorityLevel;
@@ -98,6 +99,11 @@ public class ModelFactoryController {
 		eps = load();
 		eps.updateUser(user);
 		save(eps);
+	}
+	
+	public List<Appointment> getAppointments(){
+		eps= load();
+		return eps.getAppointments().toList();
 	}
 
 	public List<User> getUsers(){
