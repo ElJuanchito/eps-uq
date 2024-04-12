@@ -1,10 +1,12 @@
 package co.edu.uniquindio.eps_uq.model;
 
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Builder
 public class User implements Comparable<User> {
 
     private String name;

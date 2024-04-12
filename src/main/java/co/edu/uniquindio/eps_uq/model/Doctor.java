@@ -1,10 +1,12 @@
 package co.edu.uniquindio.eps_uq.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
 @AllArgsConstructor
+@Builder
 public class Doctor implements Comparable<Doctor>{
 	
 	

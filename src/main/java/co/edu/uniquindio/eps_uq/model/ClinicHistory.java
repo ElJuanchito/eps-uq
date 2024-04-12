@@ -1,14 +1,18 @@
 package co.edu.uniquindio.eps_uq.model;
 
-import listas.LinkedList;
-import listas.SimpleList;
-import lombok.Data;
-
 import java.io.Serializable;
+
+import co.edu.uniquindio.eps_uq.structures.LinkedList;
+import co.edu.uniquindio.eps_uq.structures.SimpleList;
+import lombok.Data;
 
 @Data
 public class ClinicHistory implements Serializable {
-    private LinkedList<String> history;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private LinkedList<String> history;
 
     /**
      * Constructor
