@@ -1,6 +1,7 @@
 package co.edu.uniquindio.eps_uq.structures;
 
 import java.util.Comparator;
+import java.util.List;
 
 public interface LinkedList<T> extends Iterable<T>{
 
@@ -20,6 +21,7 @@ public interface LinkedList<T> extends Iterable<T>{
 	T getValue(int index);
 	boolean contains(T element);
 	void update(T element);
+	List<T> toList();
 
 //obtenerValorNodo
 //obtenerNodo

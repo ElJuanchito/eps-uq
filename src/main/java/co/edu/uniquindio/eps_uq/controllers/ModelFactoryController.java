@@ -4,6 +4,7 @@ import static co.edu.uniquindio.eps_uq.dao.EpsDao.load;
 import static co.edu.uniquindio.eps_uq.dao.EpsDao.save;
 
 import java.time.Duration;
+import java.util.List;
 import java.util.UUID;
 
 import co.edu.uniquindio.eps_uq.model.Doctor;
@@ -75,4 +76,32 @@ public class ModelFactoryController {
 		return eps.getDoctorsList();
 	}
 
+	public void addUser(String id, String name, Integer age) {
+		User user = User.builder()
+				.id(id)
+				.age(age)
+				.name(name)
+				.build();
+
+		eps = load();
+		eps.addUser(user);
+		save(eps);
+	}
+
+	public void removeUser(User user){
+		eps = load();
+		eps.deleteUser(user);
+		save(eps);
+	}
+
+	public void updateUser(User user) {
+		eps = load();
+		eps.updateUser(user);
+		save(eps);
+	}
+
+	public List<User> getUsers(){
+		eps = load();
+		return eps.getUsersList().toList();
+	}
 }

@@ -1,8 +1,6 @@
 package co.edu.uniquindio.eps_uq.structures;
 
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import java.util.*;
 
 public class SimpleList<T extends Comparable<T>> implements LinkedList<T> {
 
@@ -264,6 +262,16 @@ public class SimpleList<T extends Comparable<T>> implements LinkedList<T> {
 		var node = head;
 		while(node.next != null || !node.element.equals(element)) node = node.next;
 		node.element = element;
+	}
+
+	@Override
+	public List<T> toList(){
+		List<T> list = new ArrayList<>();
+		Iterator<T> iterator = this.iterator();
+		if(iterator.hasNext()){
+			list.add(iterator.next());
+		}
+		return list;
 	}
 
 

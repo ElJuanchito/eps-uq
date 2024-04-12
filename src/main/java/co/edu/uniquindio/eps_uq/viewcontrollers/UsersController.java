@@ -1,9 +1,14 @@
 package co.edu.uniquindio.eps_uq.viewcontrollers;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
+import co.edu.uniquindio.eps_uq.controllers.ModelFactoryController;
 import co.edu.uniquindio.eps_uq.model.User;
+import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -40,24 +45,49 @@ public class UsersController {
     @FXML
     private TextField txtName;
 
+    private ObservableList<User> listaObservable;
+
     @FXML
     void addUserEvent(ActionEvent event) {
-
+        addUserAction();
     }
 
     @FXML
     void removeUserEvent(ActionEvent event) {
-
+        removeUserAction();
     }
 
     @FXML
     void updateUserEvent(ActionEvent event) {
-
+        updateUserAction();
     }
 
     @FXML
     void initialize() {
+        updateTable();
+    }
 
+    private void addUserAction() {
+        ModelFactoryController.getInstance().addUser(txtId.getText(), txtName.getText(), Integer.getInteger(txtAge.getText()));
+    }
+
+    private void removeUserAction() {
+        User user = tblUsers.getSelectionModel().getSelectedItem();
+        ModelFactoryController.getInstance().removeUser(user);
+    }
+
+    private void updateUserAction() {
+        User user = tblUsers.getSelectionModel().getSelectedItem();
+        ModelFactoryController.getInstance().updateUser(user);
+    }
+
+    private void updateTable() {
+        listaObservable = FXCollections.observableList(ModelFactoryController.getInstance().getUsers());
+        tblUsers.setItems(listaObservable);
+        colId.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getId()));
+        colName.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getName()));
+        colAge.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getAge().toString()));
+        tblUsers.refresh();
     }
 
 }
