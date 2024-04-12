@@ -1,32 +1,40 @@
 package co.edu.uniquindio.eps_uq.structures;
 
-import java.util.Comparator;
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class SimpleList<T extends Comparable<T>> implements LinkedList<T> {
 
-	private Node<T> head;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Node head;
 	private int size;
 
 	public SimpleList(){
 		size = 0;
 	}
 
-	public SimpleList(Node<T> head){this.head = head; this.size = 0;}
+	public SimpleList(Node head){this.head = head; this.size = 0;}
 
-	private class Node<T>{
+	private class Node implements Serializable {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 		T element;
-		Node<T> next;
+		Node next;
 
 		Node(T element) {this.element = element;}
 	}
 
 	private class SimpleListIterator implements Iterator<T>{
 
-		private Node<T> node;
+		private Node node;
 
-		SimpleListIterator(Node<T> node){this.node = node;}
+		SimpleListIterator(Node node){this.node = node;}
 
 		@Override
 		public boolean hasNext() {
@@ -50,15 +58,15 @@ public class SimpleList<T extends Comparable<T>> implements LinkedList<T> {
 
 	@Override
 	public void addHead(T element) {
-		var node = new Node<>(element);
-		if (!isEmpty()) node.next = head;
+		var node = new Node(element);
+		node.next = head;
 		head = node;
 		size++;
 	}
 
 	@Override
 	public void addTail(T element) {
-		var node = new Node<>(element);
+		var node = new Node(element);
 		if(isEmpty()) head = node;
 		else{
 			var current = head;
@@ -71,7 +79,7 @@ public class SimpleList<T extends Comparable<T>> implements LinkedList<T> {
 	@Override
 	public void add(int index, T element) {
 		if(!validIndex(index)) throw new IndexOutOfBoundsException();
-		var node = new Node<>(element);
+		var node = new Node(element);
 		if(isEmpty() || index == 0){
 			node.next =head;
 			head = node;
@@ -109,7 +117,7 @@ public class SimpleList<T extends Comparable<T>> implements LinkedList<T> {
 		if(head.next == null) head = null;
 		else{
 			var current = head;
-			Node<T> previous = null;
+			Node previous = null;
 			while(current.next != null){
 				previous = current;
 				current=current.next;
@@ -139,7 +147,7 @@ public class SimpleList<T extends Comparable<T>> implements LinkedList<T> {
 		if(head.element.equals(element)) head = head.next;
 		else{
 			var current = head;
-			Node<T> previous = null;
+			Node previous = null;
 			while (!current.element.equals(element)) {
 				if(current.next == null) throw new NoSuchElementException();
 				previous=current;
@@ -156,15 +164,15 @@ public class SimpleList<T extends Comparable<T>> implements LinkedList<T> {
 		head = quickSort(head);
 	}
 
-	private Node<T> quickSort(Node<T> node) {
+	private Node quickSort(Node node) {
 		if (node == null || node.next == null) return node;
 
-		Node<T> pivot = node;
-		Node<T> lessHead = null;
-		Node<T> greaterHead = null;
-		Node<T> equalHead = pivot;
-		Node<T> current = node.next;
-		Node<T> next = null;
+		Node pivot = node;
+		Node lessHead = null;
+		Node greaterHead = null;
+		Node equalHead = pivot;
+		Node current = node.next;
+		Node next = null;
 
 		while (current != null) {
 			next = current.next;
@@ -187,7 +195,7 @@ public class SimpleList<T extends Comparable<T>> implements LinkedList<T> {
 
 		// Unir las sublistas ordenadas
 		if (lessHead != null) {
-			Node<T> temp = lessHead;
+			Node temp = lessHead;
 			while (temp.next != null) {
 				temp = temp.next;
 			}
@@ -207,7 +215,7 @@ public class SimpleList<T extends Comparable<T>> implements LinkedList<T> {
 			return;
 		}
 
-		Node<T> current = head;
+		Node current = head;
 		while (current != null) {
 			System.out.print(current.element);
 			if (current.next != null) {

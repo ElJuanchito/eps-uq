@@ -1,5 +1,6 @@
 package co.edu.uniquindio.eps_uq.model;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -9,9 +10,13 @@ import co.edu.uniquindio.eps_uq.structures.SimpleList;
 import lombok.Getter;
 
 @Getter
-public class Eps {
+public class Eps implements Serializable {
 
-    private final LinkedList<User> usersList;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private final LinkedList<User> usersList;
     private final LinkedList<Doctor> doctorsList;
     private final LinkedList<Appointment> appointments;
     private final PriorityQueue<Request> requestsQueue;

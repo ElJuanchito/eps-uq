@@ -30,7 +30,7 @@ public class MainMenuController implements Initializable {
 
 	private void citasAction() {
 		try {
-			centerPane.setCenter(FxmlPerspective.loadPerspective("d").getPerspective());
+			centerPane.setCenter(FxmlPerspective.loadPerspective("showappointment").getPerspective());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

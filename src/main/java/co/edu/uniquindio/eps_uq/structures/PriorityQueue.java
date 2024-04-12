@@ -1,15 +1,24 @@
 package co.edu.uniquindio.eps_uq.structures;
 
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class PriorityQueue<T extends Comparable<T>> implements Iterable<T>{
+public class PriorityQueue<T extends Comparable<T>> implements Iterable<T>, Serializable {
 
-    private Node head;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Node head;
     private int size = 0;
 
-    private class Node {
-        T value;
+	private class Node implements Serializable {
+        /**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+		T value;
         Node next;
 
         Node(T element){
