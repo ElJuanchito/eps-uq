@@ -20,16 +20,16 @@ public class Appointment implements Comparable<Appointment>{
 	private PriorityLevel priorityLevel;
 	private Doctor doctor;
 	private String detail;
-<<<<<<< Updated upstream
+
 	private Duration duration;
 	
 	
-=======
+
 
 
 	@Override
 	public int compareTo(Appointment appointment) {
 		return id.compareTo(appointment.getId());
 	}
->>>>>>> Stashed changes
+
 }
