@@ -15,13 +15,12 @@ public class Request implements Comparable<Request>{
 	
 	@EqualsAndHashCode.Include
 	private String id;
-	
-	
 	private User user;
 	private PriorityLevel priorityLevel;
 	private Doctor doctor;
 	private String detail;
 	private Duration duration;
+
 	@Override
 	public int compareTo(Request o) {
 		return this.priorityLevel.getValue()-o.priorityLevel.getValue();

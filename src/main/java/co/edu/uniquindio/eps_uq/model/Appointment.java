@@ -4,32 +4,26 @@ import java.time.Duration;
 import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded =true)
 @AllArgsConstructor
+@Builder
 public class Appointment implements Comparable<Appointment>{
 	@EqualsAndHashCode.Include
-	private Long id;
-	
-	
+	private String id;
 	private LocalDate date;
 	private User user;
 	private PriorityLevel priorityLevel;
 	private Doctor doctor;
 	private String detail;
-<<<<<<< Updated upstream
 	private Duration duration;
-	
-	
-=======
-
 
 	@Override
 	public int compareTo(Appointment appointment) {
-		return id.compareTo(appointment.getId());
+		return date.compareTo(appointment.getDate());
 	}
->>>>>>> Stashed changes
 }

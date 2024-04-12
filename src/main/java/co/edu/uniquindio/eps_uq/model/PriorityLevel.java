@@ -4,11 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 
+@Getter
 @AllArgsConstructor
 public enum PriorityLevel {
 	HIGH(3), MEDIUM(2), LOW (2);
 	
-	@Getter
 	private int value;
 	
 	public static int [] intValues(){
