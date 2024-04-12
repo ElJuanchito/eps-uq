@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-public class User {
+public class User implements Comparable<User> {
 
     private String name;
     @EqualsAndHashCode.Include
@@ -16,4 +16,9 @@ public class User {
     private String id;
     private Integer age;
     private ClinicHistory history;
+
+    @Override
+    public int compareTo(User user) {
+        return age.compareTo(user.getAge());
+    }
 }

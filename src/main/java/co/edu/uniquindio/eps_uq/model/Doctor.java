@@ -5,9 +5,14 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class Doctor {
+public class Doctor implements Comparable<Doctor>{
 	
 	
-	private String id;
+	private Long id;
 	private String nombre;
+
+	@Override
+	public int compareTo(Doctor doctor) {
+		return id.compareTo(doctor.getId());
+	}
 }

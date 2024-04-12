@@ -10,9 +10,9 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded =true)
 @AllArgsConstructor
-public class Appointment {
+public class Appointment implements Comparable<Appointment>{
 	@EqualsAndHashCode.Include
-	private String id;
+	private Long id;
 	
 	
 	private LocalDate date;
@@ -20,7 +20,16 @@ public class Appointment {
 	private PriorityLevel priorityLevel;
 	private Doctor doctor;
 	private String detail;
+<<<<<<< Updated upstream
 	private Duration duration;
 	
 	
+=======
+
+
+	@Override
+	public int compareTo(Appointment appointment) {
+		return id.compareTo(appointment.getId());
+	}
+>>>>>>> Stashed changes
 }
