@@ -48,6 +48,29 @@ public class PriorityQueue<T extends Comparable<T>> implements Iterable<T>{
 
     @Override
 	public Iterator<T> iterator(){
-		return null;
+		return new PriorityQueueIterator(head);
 	}
+    
+    private class PriorityQueueIterator implements Iterator<T>{
+    	private Node current;
+    	
+    	public PriorityQueueIterator (Node head) {
+    		this.current= head;
+    	}
+		@Override
+		public boolean hasNext() {
+			return current!=null;
+		}
+
+		@Override
+		public T next() {
+			if(!hasNext()) {
+				throw new NoSuchElementException("No hay mas elementos a iterar");
+			}
+			T value= current.value;
+			current=current.next;
+			return value;
+		}
+    
+    }
 }
