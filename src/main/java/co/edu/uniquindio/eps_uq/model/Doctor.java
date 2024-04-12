@@ -8,7 +8,7 @@ import lombok.Data;
 public class Doctor implements Comparable<Doctor>{
 	
 	
-	private Long id;
+	private String id;
 	private String nombre;
 
 	@Override
