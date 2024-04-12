@@ -35,25 +35,7 @@ public class ModelFactoryController {
 
 	public PriorityQueue<Request> getRequests() {
 		eps = load();
-		PriorityQueue<Request> queue = eps.getRequestsQueue();
-		queue.enqueue(Request.builder().id(UUID.randomUUID().toString())
-				.user(User.builder().id("Juan").name("Juan LOW 1").age(10).build()).priorityLevel(PriorityLevel.LOW)
-				.duration(Duration.ofMinutes(20)).doctor(Doctor.builder().id("1234l").nombre("Pepe").build())
-				.detail("Ninguna").build());
-		queue.enqueue(Request.builder().id(UUID.randomUUID().toString())
-				.user(User.builder().id("Juan").name("Juan HIGH 1").age(10).build()).priorityLevel(PriorityLevel.HIGH)
-				.duration(Duration.ofHours(1)).doctor(Doctor.builder().id("1234l").nombre("Pepe").build())
-				.detail("Ninguna").build());
-		queue.enqueue(Request.builder().id(UUID.randomUUID().toString())
-				.user(User.builder().id("Juan").name("Juan MID 1").age(10).build()).priorityLevel(PriorityLevel.MEDIUM)
-				.duration(Duration.ofMinutes(30)).doctor(Doctor.builder().id("1234l").nombre("Pepe").build())
-				.detail("Ninguna").build());
-		queue.enqueue(Request.builder().id(UUID.randomUUID().toString())
-				.user(User.builder().id("Juan").name("Juan LOW 2").age(10).build()).priorityLevel(PriorityLevel.LOW)
-				.doctor(Doctor.builder().id("1234l").nombre("Pepe").build()).detail("Ninguna")
-				.duration(Duration.ofHours(1).plusMinutes(30)).build());
-		save(eps);
-		return queue;
+		return eps.getRequestsQueue();
 	}
 
 	public void addRequest(User user, PriorityLevel priorityLevel, Doctor doctor, String detail) {
