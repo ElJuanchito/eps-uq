@@ -256,7 +256,15 @@ public class SimpleList<T extends Comparable<T>> implements LinkedList<T> {
 			node = node.next;
 		}
 		return false;
-
 	}
+
+	@Override
+	public void update(T element){
+		if(isEmpty()) throw new NoSuchElementException();
+		var node = head;
+		while(node.next != null || !node.element.equals(element)) node = node.next;
+		node.element = element;
+	}
+
 
 }

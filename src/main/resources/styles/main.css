@@ -31,3 +31,20 @@
 .header {
 	-fx-padding: 10;
 }
+
+.label {
+	-fx-text-fill: #212529;
+	-fx-font-size: 1.2em;
+}
+
+.text-field {
+	-fx-border-color: #b4b1b1;
+	-fx-border-radius: 0.25em;
+	-fx-border-width: 0.125em;
+	-fx-background-radius: 0.25em;
+	-fx-padding: 0.5em;
+}
+
+.text-field:hover {
+	-fx-effect: dropshadow(three-pass-box, rgb(36, 152, 166), 10, 0, 0, 0);
+}

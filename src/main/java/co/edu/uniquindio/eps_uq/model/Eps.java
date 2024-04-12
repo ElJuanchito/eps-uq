@@ -32,6 +32,11 @@ public class Eps {
         usersList.remove(user);
     }
 
+    public void updateUser(User user){
+        if(!usersList.contains(user)) throw new IllegalArgumentException();
+        usersList.update(user);
+    }
+
     public void addDoctor(Doctor doctor) {
         if(doctorsList.contains(doctor)) throw new IllegalArgumentException("Doctor already exists");
         doctorsList.addTail(doctor);

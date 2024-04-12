@@ -19,6 +19,7 @@ public interface LinkedList<T> extends Iterable<T>{
 	int getIndex(T element);
 	T getValue(int index);
 	boolean contains(T element);
+	void update(T element);
 
 //obtenerValorNodo
 //obtenerNodo
