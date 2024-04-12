@@ -102,6 +102,22 @@ public class ModelFactoryController {
 
 	public List<User> getUsers(){
 		eps = load();
+		eps.addUser(User.builder()
+				.id("100")
+				.age(50)
+				.name("Arnolfo")
+				.build());
+		eps.addUser(User.builder()
+				.id("200")
+				.age(20)
+				.name("Veregildo")
+				.build());
+		eps.addUser(User.builder()
+				.id("300")
+				.age(10)
+				.name("Adonai")
+				.build());
+		save(eps);
 		return eps.getUsersList().toList();
 	}
 }
