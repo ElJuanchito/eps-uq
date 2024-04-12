@@ -21,7 +21,7 @@ public enum PriorityLevel {
 		
 	}
 	
-	public PriorityLevel valueByIntValue(int value) {
+	public static PriorityLevel valueByIntValue(int value) {
 		PriorityLevel [] values= values();
 		for(PriorityLevel level: values) {
 			if(level.getValue()==value)
