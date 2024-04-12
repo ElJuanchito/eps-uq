@@ -18,14 +18,14 @@ public class Prueba {
 		Request solicitud3 = new Request("11", usuario1, PriorityLevel.LOW, doctor1, "General", null);
 		Request solicitud4 = new Request("12", usuario1, PriorityLevel.LOW, doctor1, "General", null);
 		
-		solicitudes.Enqueue(solicitud1);
-		solicitudes.Enqueue(solicitud2);
-		solicitudes.Enqueue(solicitud3);
-		solicitudes.Enqueue(solicitud4);
+		solicitudes.enqueue(solicitud1);
+		solicitudes.enqueue(solicitud2);
+		solicitudes.enqueue(solicitud3);
+		solicitudes.enqueue(solicitud4);
 		
 		
 		while(!solicitudes.isEmpty()) {
-			System.out.println(solicitudes.Dequeue().getId());
+			System.out.println(solicitudes.dequeue().getId());
 		}
 	}
 

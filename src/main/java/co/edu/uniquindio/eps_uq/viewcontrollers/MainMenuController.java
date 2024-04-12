@@ -43,7 +43,15 @@ public class MainMenuController implements Initializable {
 
 	@FXML
 	void usuariosEvent(ActionEvent event) {
+		usuariosAction();
+	}
 
+	private void usuariosAction() {
+		try {
+			centerPane.setCenter(FxmlPerspective.loadPerspective("users").getPerspective());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@FXML
