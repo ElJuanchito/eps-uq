@@ -63,7 +63,7 @@ public class SimpleList<T extends Comparable<T>> implements LinkedList<T> {
 		else{
 			var current = head;
 			while(current.next != null) current = current.next;
-			current = node;
+			current.next = node;
 		}
 		size++;
 	}
@@ -249,9 +249,9 @@ public class SimpleList<T extends Comparable<T>> implements LinkedList<T> {
 
 	@Override
 	public boolean contains(T element) {
-		if(isEmpty()) throw new NoSuchElementException("Is empty");
+		if(isEmpty()) return false;
 		var node = head;
-		while(node.next != null){
+		while(node != null){
 			if(node.element.equals(element)) return true;
 			node = node.next;
 		}

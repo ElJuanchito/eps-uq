@@ -1,10 +1,6 @@
 package co.edu.uniquindio.eps_uq.model;
 
-import co.edu.uniquindio.eps_uq.structures.LinkedList;
-import co.edu.uniquindio.eps_uq.structures.PriorityQueue;
-import co.edu.uniquindio.eps_uq.structures.SimpleList;
-
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 import co.edu.uniquindio.eps_uq.structures.LinkedList;
@@ -54,9 +50,9 @@ public class Eps {
         return requestsQueue.Dequeue();
     }
 
-    public Appointment processAppointment(LocalDate date) {
+    public Appointment processAppointment(LocalDateTime date) {
         Appointment appointment = mapRequestToAppointment(requestsQueue.Dequeue());
-        appointment.setDate(date);
+        appointment.setDate(date.toLocalDate());
         appointments.addTail(appointment);
         appointments.sort();
         return appointment;

@@ -30,7 +30,7 @@ public class MainMenuController implements Initializable {
 
 	private void citasAction() {
 		try {
-			centerPane.setCenter(FxmlPerspective.loadPerspective("showappointment").getPerspective());
+			centerPane.setCenter(FxmlPerspective.loadPerspective("d").getPerspective());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -44,6 +44,19 @@ public class MainMenuController implements Initializable {
 	@FXML
 	void usuariosEvent(ActionEvent event) {
 
+	}
+
+	@FXML
+	void doctoresEvent(ActionEvent event) {
+		doctoresAction();
+	}
+
+	private void doctoresAction() {
+		try {
+			centerPane.setCenter(FxmlPerspective.loadPerspective("doctormanagement").getPerspective());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static MainMenuController getInstance() {

@@ -11,7 +11,9 @@ import co.edu.uniquindio.eps_uq.model.Eps;
 import co.edu.uniquindio.eps_uq.model.PriorityLevel;
 import co.edu.uniquindio.eps_uq.model.Request;
 import co.edu.uniquindio.eps_uq.model.User;
+import co.edu.uniquindio.eps_uq.structures.LinkedList;
 import co.edu.uniquindio.eps_uq.structures.PriorityQueue;
+import javafx.util.Callback;
 
 public class ModelFactoryController {
 	private static ModelFactoryController instance;
@@ -60,12 +62,17 @@ public class ModelFactoryController {
 		save(eps);
 
 	}
-	
-	public void addDoctor(String id,String nombre) {
-		Doctor doctor= Doctor.builder().id(id).nombre(nombre).build();
-		eps= load();
+
+	public void addDoctor(String id, String nombre) {
+		Doctor doctor = Doctor.builder().id(id).nombre(nombre).build();
+		eps = load();
 		eps.addDoctor(doctor);
 		save(eps);
 	}
-	
+
+	public LinkedList<Doctor> getDoctors() {
+		load();
+		return eps.getDoctorsList();
+	}
+
 }
