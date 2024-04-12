@@ -1,5 +1,9 @@
 package co.edu.uniquindio.eps_uq.model;
 
+import co.edu.uniquindio.eps_uq.structures.LinkedList;
+import co.edu.uniquindio.eps_uq.structures.SimpleList;
+import lombok.Data;
+
 import java.io.Serializable;
 
 import co.edu.uniquindio.eps_uq.structures.LinkedList;
