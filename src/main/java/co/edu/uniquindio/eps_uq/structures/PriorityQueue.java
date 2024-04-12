@@ -48,18 +48,21 @@ public class PriorityQueue<T extends Comparable<T>> implements Iterable<T>{
 
     @Override
 	public Iterator<T> iterator(){
-		return new PriorityQueueIterator(head);
+		return new PriorityQueueIterator(head, size);
 	}
     
     private class PriorityQueueIterator implements Iterator<T>{
     	private Node current;
+    	private int i;
+		private final int size;
     	
-    	public PriorityQueueIterator (Node head) {
+    	private PriorityQueueIterator (Node head, int size) {
     		this.current= head;
+    		this.size = size;
     	}
 		@Override
 		public boolean hasNext() {
-			return current!=null;
+			return i<size;
 		}
 
 		@Override
@@ -69,6 +72,7 @@ public class PriorityQueue<T extends Comparable<T>> implements Iterable<T>{
 			}
 			T value= current.value;
 			current=current.next;
+			i++;
 			return value;
 		}
     
