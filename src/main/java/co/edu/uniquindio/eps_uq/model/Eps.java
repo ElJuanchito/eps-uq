@@ -8,18 +8,20 @@ import co.edu.uniquindio.eps_uq.structures.LinkedList;
 import co.edu.uniquindio.eps_uq.structures.PriorityQueue;
 import co.edu.uniquindio.eps_uq.structures.SimpleList;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class Eps implements Serializable {
 
     /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private final LinkedList<User> usersList;
-    private final LinkedList<Doctor> doctorsList;
-    private final LinkedList<Appointment> appointments;
-    private final PriorityQueue<Request> requestsQueue;
+	private  LinkedList<User> usersList;
+    private  LinkedList<Doctor> doctorsList;
+    private  LinkedList<Appointment> appointments;
+    private  PriorityQueue<Request> requestsQueue;
 
     public Eps() {
         usersList = new SimpleList<>();

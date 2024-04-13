@@ -60,7 +60,8 @@ public class ModelFactoryController {
 			aux.enqueue(solicitud);
 		}
 		
-		
+		eps.setRequestsQueue(aux);
+		save(eps);
 		return lista;
 	}
 
