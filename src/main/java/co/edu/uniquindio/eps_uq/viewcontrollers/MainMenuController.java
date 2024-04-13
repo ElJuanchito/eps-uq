@@ -18,6 +18,7 @@ public class MainMenuController implements Initializable {
 	@FXML
 	private BorderPane centerPane, secondLayer, secondLayerInner;
 	private static MainMenuController instance;
+	private FadeTransition fade;
 
 	public MainMenuController() {
 		instance = this;
@@ -28,17 +29,9 @@ public class MainMenuController implements Initializable {
 		citasAction();
 	}
 
-	private void citasAction() {
-		try {
-			centerPane.setCenter(FxmlPerspective.loadPerspective("showappointment").getPerspective());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
 	@FXML
 	void cronogramaEvent(ActionEvent event) {
-
+		cronogramaAction();
 	}
 
 	@FXML
@@ -47,16 +40,27 @@ public class MainMenuController implements Initializable {
 	}
 
 	private void usuariosAction() {
-		try {
-			centerPane.setCenter(FxmlPerspective.loadPerspective("users").getPerspective());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		cronogramaAction();
 	}
 
 	@FXML
 	void doctoresEvent(ActionEvent event) {
 		doctoresAction();
+	}
+
+	private void citasAction() {
+		try {
+			centerPane.setCenter(FxmlPerspective.loadPerspective("showappointment").getPerspective());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void cronogramaAction() {
+		try {
+			centerPane.setCenter(FxmlPerspective.loadPerspective("scheduleshow").getPerspective());
+		} catch (IOException e) {
+		}
 	}
 
 	private void doctoresAction() {
@@ -72,16 +76,20 @@ public class MainMenuController implements Initializable {
 	}
 
 	public void mostrarCapa(Parent persp) {
+		if (fade == null)
+			fade = new FadeTransition(Duration.millis(100), secondLayer);
 		secondLayer.setDisable(false);
 		secondLayerInner.setCenter(persp);
-		FadeTransition fade = new FadeTransition(Duration.millis(100), secondLayer);
+		fade.setFromValue(0);
 		fade.setToValue(1);
 		fade.playFromStart();
 
 	}
 
 	public void ocultarCapa() {
-		FadeTransition fade = new FadeTransition(Duration.millis(100), secondLayer);
+		if (fade == null)
+			fade = new FadeTransition(Duration.millis(100), secondLayer);
+		fade.setFromValue(1);
 		fade.setToValue(0);
 		fade.setOnFinished(e -> {
 			secondLayerInner.setCenter(null);

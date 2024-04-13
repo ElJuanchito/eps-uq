@@ -4,9 +4,11 @@ import static co.edu.uniquindio.eps_uq.dao.EpsDao.load;
 import static co.edu.uniquindio.eps_uq.dao.EpsDao.save;
 
 import java.time.Duration;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
+import co.edu.uniquindio.eps_uq.model.Appointment;
 import co.edu.uniquindio.eps_uq.model.Doctor;
 import co.edu.uniquindio.eps_uq.model.Eps;
 import co.edu.uniquindio.eps_uq.model.PriorityLevel;
@@ -34,25 +36,7 @@ public class ModelFactoryController {
 
 	public PriorityQueue<Request> getRequests() {
 		eps = load();
-		PriorityQueue<Request> queue = eps.getRequestsQueue();
-		queue.enqueue(Request.builder().id(UUID.randomUUID().toString())
-				.user(User.builder().id("Juan").name("Juan LOW 1").age(10).build()).priorityLevel(PriorityLevel.LOW)
-				.duration(Duration.ofMinutes(20)).doctor(Doctor.builder().id("1234l").nombre("Pepe").build())
-				.detail("Ninguna").build());
-		queue.enqueue(Request.builder().id(UUID.randomUUID().toString())
-				.user(User.builder().id("Juan").name("Juan HIGH 1").age(10).build()).priorityLevel(PriorityLevel.HIGH)
-				.duration(Duration.ofHours(1)).doctor(Doctor.builder().id("1234l").nombre("Pepe").build())
-				.detail("Ninguna").build());
-		queue.enqueue(Request.builder().id(UUID.randomUUID().toString())
-				.user(User.builder().id("Juan").name("Juan MID 1").age(10).build()).priorityLevel(PriorityLevel.MEDIUM)
-				.duration(Duration.ofMinutes(30)).doctor(Doctor.builder().id("1234l").nombre("Pepe").build())
-				.detail("Ninguna").build());
-		queue.enqueue(Request.builder().id(UUID.randomUUID().toString())
-				.user(User.builder().id("Juan").name("Juan LOW 2").age(10).build()).priorityLevel(PriorityLevel.LOW)
-				.doctor(Doctor.builder().id("1234l").nombre("Pepe").build()).detail("Ninguna")
-				.duration(Duration.ofHours(1).plusMinutes(30)).build());
-		save(eps);
-		return queue;
+		return eps.getRequestsQueue();
 	}
 
 	public void addRequest(User user, PriorityLevel priorityLevel, Doctor doctor, String detail) {
@@ -101,6 +85,25 @@ public class ModelFactoryController {
 		eps.updateUser(user);
 		save(eps);
 		eps.getUsersList().print();
+	}
+	
+	public List<Appointment> getAppointments(){
+		eps= load();
+		eps.addAppointment(Appointment.builder().id("093")
+				.date(LocalDate.now())
+				
+				.user(User.builder()
+				.id("100")
+				.age(50)
+				.name("Arnolfo")
+				.build())
+				.priorityLevel(PriorityLevel.HIGH)
+				.doctor(Doctor.builder().nombre("Juan").id("08").build())
+				.detail("Brote en la piel")
+				.duration(Duration.ofHours(1))
+				.build());
+		save(eps);
+		return eps.getAppointments().toList();
 	}
 
 	public List<User> getUsers(){

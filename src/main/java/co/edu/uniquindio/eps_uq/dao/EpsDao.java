@@ -1,3 +1,4 @@
+
 package co.edu.uniquindio.eps_uq.dao;
 
 import java.io.FileInputStream;
@@ -24,7 +25,6 @@ public class EpsDao {
 		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(ROUTE))) {
 			oos.writeObject(eps);
 		} catch (Exception e) {
-			e.printStackTrace();
 		}
 
 	}
