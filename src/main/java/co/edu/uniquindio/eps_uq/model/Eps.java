@@ -46,6 +46,11 @@ public class Eps implements Serializable {
         if(doctorsList.contains(doctor)) throw new IllegalArgumentException("Doctor already exists");
         doctorsList.addTail(doctor);
     }
+    
+    public void addAppointment(Appointment appointment) {
+    	if(appointments.contains(appointment)) throw new IllegalArgumentException("Appointment already exists");
+    	appointments.addTail(appointment);
+    }
 
     public void deleteDoctor(Doctor doctor) {
         if(!doctorsList.contains(doctor)) throw new IllegalArgumentException("Doctor does not exist");
