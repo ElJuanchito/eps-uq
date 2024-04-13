@@ -2,7 +2,10 @@ package co.edu.uniquindio.eps_uq.viewcontrollers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.temporal.TemporalAdjusters;
 import java.util.Iterator;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.eps_uq.controllers.ModelFactoryController;
@@ -28,8 +31,24 @@ public class ShowRequestsController implements Initializable {
     
     @FXML
     void programarEvent(ActionEvent event) {
-
+    	programarAction();
     }
+
+	private void programarAction() {
+		List<Request> solicitudes= ModelFactoryController.getInstance().getRequestList();
+		LocalDate fechaIniHigh= LocalDate.now();
+		LocalDate fechaFinHigh= LocalDate.now().plusMonths(1).with(TemporalAdjusters.lastDayOfMonth());
+		
+		LocalDate fechaIniMed=fechaFinHigh;
+		LocalDate fechaFinMed= fechaFinHigh.plusMonths(1).with(TemporalAdjusters.lastDayOfMonth());
+		
+		LocalDate fechaIniLow=fechaFinMed;
+		LocalDate fechaFinLow=fechaFinMed.plusMonths(1).with(TemporalAdjusters.lastDayOfMonth());
+		
+		
+		
+		
+	}
 
 	@FXML
 	void agregarEvent(ActionEvent event) {
