@@ -1,9 +1,10 @@
 package co.edu.uniquindio.eps_uq.structures;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.List;
 
-public interface LinkedList<T> extends Iterable<T>{
+public interface LinkedList<T> extends Iterable<T>, Serializable {
 
 	void addHead(T element);
 	void addTail(T element);

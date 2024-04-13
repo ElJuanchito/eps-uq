@@ -1,9 +1,14 @@
 package co.edu.uniquindio.eps_uq.structures;
 
+import java.io.Serializable;
 import java.util.*;
 
 public class SimpleList<T extends Comparable<T>> implements LinkedList<T> {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Node<T> head;
 	private int size;
 
@@ -13,7 +18,7 @@ public class SimpleList<T extends Comparable<T>> implements LinkedList<T> {
 
 	public SimpleList(Node<T> head){this.head = head; this.size = 0;}
 
-	private class Node<T>{
+	private class Node<T> implements Serializable {
 		T element;
 		Node<T> next;
 
