@@ -5,6 +5,7 @@ import static co.edu.uniquindio.eps_uq.dao.EpsDao.save;
 
 import java.time.Duration;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -46,6 +47,21 @@ public class ModelFactoryController {
 		eps.addRequest(request);
 		save(eps);
 
+	}
+	
+	public List <Request> getRequestList(){
+		eps= load();
+		PriorityQueue<Request> requests= eps.getRequestsQueue();
+		PriorityQueue<Request> aux = new PriorityQueue<Request>();
+		List<Request> lista = new ArrayList<Request>();
+		while (!requests.isEmpty()) {
+			Request solicitud= requests.dequeue();
+			lista.add(solicitud);
+			aux.enqueue(solicitud);
+		}
+		
+		
+		return lista;
 	}
 
 	public void addDoctor(String id, String nombre) {
@@ -89,41 +105,12 @@ public class ModelFactoryController {
 	
 	public List<Appointment> getAppointments(){
 		eps= load();
-		eps.addAppointment(Appointment.builder().id("093")
-				.date(LocalDate.now())
-				
-				.user(User.builder()
-				.id("100")
-				.age(50)
-				.name("Arnolfo")
-				.build())
-				.priorityLevel(PriorityLevel.HIGH)
-				.doctor(Doctor.builder().nombre("Juan").id("08").build())
-				.detail("Brote en la piel")
-				.duration(Duration.ofHours(1))
-				.build());
 		save(eps);
 		return eps.getAppointments().toList();
 	}
 
 	public List<User> getUsers(){
 		eps = load();
-		eps.getUsersList().print();
-		eps.addUser(User.builder()
-				.id("100")
-				.age(50)
-				.name("Arnolfo")
-				.build());
-		eps.addUser(User.builder()
-				.id("200")
-				.age(20)
-				.name("Veregildo")
-				.build());
-		eps.addUser(User.builder()
-				.id("300")
-				.age(10)
-				.name("Adonai")
-				.build());
 		save(eps);
 		eps.getUsersList().print();
 		System.out.println(eps.getUsersList().toList());

@@ -11,12 +11,25 @@ import co.edu.uniquindio.eps_uq.model.Request;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
 public class ShowRequestsController implements Initializable {
+	
+	
+
+    @FXML
+    private Button btnProgramarRequests;
 
 	@FXML
 	private VBox vboxCards;
+    
+    
+    
+    @FXML
+    void programarEvent(ActionEvent event) {
+
+    }
 
 	@FXML
 	void agregarEvent(ActionEvent event) {
