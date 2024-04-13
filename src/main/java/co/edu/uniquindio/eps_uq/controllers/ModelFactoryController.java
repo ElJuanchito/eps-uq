@@ -85,6 +85,8 @@ public class ModelFactoryController {
 	
 	public List<Appointment> getAppointments(){
 		eps= load();
+		eps.addAppointment(Appointment.builder().id("093").build());
+		save(eps);
 		return eps.getAppointments().toList();
 	}
 
