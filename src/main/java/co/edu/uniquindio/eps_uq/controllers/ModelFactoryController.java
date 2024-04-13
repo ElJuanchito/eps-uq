@@ -4,6 +4,7 @@ import static co.edu.uniquindio.eps_uq.dao.EpsDao.load;
 import static co.edu.uniquindio.eps_uq.dao.EpsDao.save;
 
 import java.time.Duration;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -85,7 +86,19 @@ public class ModelFactoryController {
 	
 	public List<Appointment> getAppointments(){
 		eps= load();
-		eps.addAppointment(Appointment.builder().id("093").build());
+		eps.addAppointment(Appointment.builder().id("093")
+				.date(LocalDate.now())
+				
+				.user(User.builder()
+				.id("100")
+				.age(50)
+				.name("Arnolfo")
+				.build())
+				.priorityLevel(PriorityLevel.HIGH)
+				.doctor(Doctor.builder().nombre("Juan").id("08").build())
+				.detail("Brote en la piel")
+				.duration(Duration.ofHours(1))
+				.build());
 		save(eps);
 		return eps.getAppointments().toList();
 	}
