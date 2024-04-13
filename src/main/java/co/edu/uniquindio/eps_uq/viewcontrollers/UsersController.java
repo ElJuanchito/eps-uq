@@ -69,16 +69,19 @@ public class UsersController {
 
     private void addUserAction() {
         ModelFactoryController.getInstance().addUser(txtId.getText(), txtName.getText(), Integer.getInteger(txtAge.getText()));
+        updateTable();
     }
 
     private void removeUserAction() {
         User user = tblUsers.getSelectionModel().getSelectedItem();
         ModelFactoryController.getInstance().removeUser(user);
+        updateTable();
     }
 
     private void updateUserAction() {
         User user = tblUsers.getSelectionModel().getSelectedItem();
         ModelFactoryController.getInstance().updateUser(user);
+        updateTable();
     }
 
     private void updateTable() {

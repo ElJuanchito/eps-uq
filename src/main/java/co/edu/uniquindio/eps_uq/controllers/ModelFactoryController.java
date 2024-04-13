@@ -86,22 +86,26 @@ public class ModelFactoryController {
 		eps = load();
 		eps.addUser(user);
 		save(eps);
+		eps.getUsersList().print();
 	}
 
 	public void removeUser(User user){
 		eps = load();
 		eps.deleteUser(user);
 		save(eps);
+		eps.getUsersList().print();
 	}
 
 	public void updateUser(User user) {
 		eps = load();
 		eps.updateUser(user);
 		save(eps);
+		eps.getUsersList().print();
 	}
 
 	public List<User> getUsers(){
 		eps = load();
+		eps.getUsersList().print();
 		eps.addUser(User.builder()
 				.id("100")
 				.age(50)
@@ -118,6 +122,8 @@ public class ModelFactoryController {
 				.name("Adonai")
 				.build());
 		save(eps);
+		eps.getUsersList().print();
+		System.out.println(eps.getUsersList().toList());
 		return eps.getUsersList().toList();
 	}
 }
