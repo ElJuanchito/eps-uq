@@ -273,8 +273,9 @@ public class SimpleList<T extends Comparable<T>> implements LinkedList<T> {
 	public List<T> toList(){
 		List<T> list = new ArrayList<>();
 		Iterator<T> iterator = this.iterator();
-		if(iterator.hasNext()){
-			list.add(iterator.next());
+		while(iterator.hasNext()){
+			T next = iterator.next();
+			list.add(next);
 		}
 		return list;
 	}
