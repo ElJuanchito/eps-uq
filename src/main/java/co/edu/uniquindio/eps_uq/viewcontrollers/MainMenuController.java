@@ -40,7 +40,11 @@ public class MainMenuController implements Initializable {
 	}
 
 	private void usuariosAction() {
-		cronogramaAction();
+		try {
+			centerPane.setCenter(FxmlPerspective.loadPerspective("users").getPerspective());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@FXML
