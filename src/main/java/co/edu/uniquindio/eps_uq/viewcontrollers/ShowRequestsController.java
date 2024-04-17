@@ -65,6 +65,7 @@ public class ShowRequestsController implements Initializable {
 	}
 
 	public void updateRequests() {
+		vboxCards.getChildren().clear();
 		Iterator<Request> iterator = ModelFactoryController.getInstance().getRequests().iterator();
 		while (iterator.hasNext()) {
 			Request r = iterator.next();
