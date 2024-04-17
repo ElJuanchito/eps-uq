@@ -2,10 +2,7 @@ package co.edu.uniquindio.eps_uq.viewcontrollers;
 
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.temporal.TemporalAdjusters;
 import java.util.Iterator;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import co.edu.uniquindio.eps_uq.controllers.ModelFactoryController;
@@ -26,8 +23,16 @@ public class ShowRequestsController implements Initializable {
 
 	@FXML
 	private VBox vboxCards;
-    
-    
+
+	private static ShowRequestsController instance;
+
+	public static ShowRequestsController getInstance() {
+		return instance;
+	}
+
+	public ShowRequestsController() {
+		instance = this;
+	}
     
     @FXML
     void programarEvent(ActionEvent event) {
@@ -35,19 +40,7 @@ public class ShowRequestsController implements Initializable {
     }
 
 	private void programarAction() {
-		List<Request> solicitudes= ModelFactoryController.getInstance().getRequestList();
-		LocalDate fechaIniHigh= LocalDate.now();
-		LocalDate fechaFinHigh= LocalDate.now().plusMonths(1).with(TemporalAdjusters.lastDayOfMonth());
-		
-		LocalDate fechaIniMed=fechaFinHigh;
-		LocalDate fechaFinMed= fechaFinHigh.plusMonths(1).with(TemporalAdjusters.lastDayOfMonth());
-		
-		LocalDate fechaIniLow=fechaFinMed;
-		LocalDate fechaFinLow=fechaFinMed.plusMonths(1).with(TemporalAdjusters.lastDayOfMonth());
-		
-		
-		
-		
+		ModelFactoryController.getInstance().createAppointmentsFromRequests();		
 	}
 
 	@FXML
@@ -62,11 +55,16 @@ public class ShowRequestsController implements Initializable {
 		} catch (IOException e) {
 			return;
 		}
+		
 		MainMenuController.getInstance().mostrarCapa(perspective.getPerspective());
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		updateRequests();
+	}
+
+	public void updateRequests() {
 		Iterator<Request> iterator = ModelFactoryController.getInstance().getRequests().iterator();
 		while (iterator.hasNext()) {
 			Request r = iterator.next();

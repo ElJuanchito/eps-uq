@@ -103,4 +103,14 @@ public class PriorityQueue<T extends Comparable<T>> implements Iterable<T>, Seri
         }
 
     }
+
+	public T seek() {
+		if(head == null) return null;
+        return head.value;
+	}
+
+	public int size() {
+		System.out.println(size);
+		return size;
+	}
 }

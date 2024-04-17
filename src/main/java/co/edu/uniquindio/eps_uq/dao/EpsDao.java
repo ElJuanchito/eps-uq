@@ -15,6 +15,7 @@ public class EpsDao {
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(ROUTE))) {
 			return (Eps) ois.readObject();
 		} catch (Exception e) {
+			e.printStackTrace();
 			Eps eps = new Eps();
 			save(eps);
 			return eps;

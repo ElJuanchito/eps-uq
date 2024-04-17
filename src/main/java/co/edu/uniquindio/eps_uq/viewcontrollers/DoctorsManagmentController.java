@@ -11,6 +11,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -43,18 +45,30 @@ public class DoctorsManagmentController implements Initializable {
 	}
 
 	private void addDoctorAction() {
-		ModelFactoryController.getInstance().addDoctor(txtIdDoctor.getText(), txtNombreDoctor.getText());
-		ModelFactoryController.getInstance().getDoctors().print();
+		try {
+			ModelFactoryController.getInstance().addDoctor(txtIdDoctor.getText().trim(),
+					txtNombreDoctor.getText().trim());
+			updateTable();
+			ModelFactoryController.getInstance().getDoctors().print();
+		} catch (Exception e) {
+			new Alert(AlertType.WARNING, "El doctor con esa identificacion ya existe").show();
+		}
+		
+		
 	}
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		colIdDoctor.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getId()));
 		colNombreDoctor.setCellValueFactory(e -> new ReadOnlyStringWrapper(e.getValue().getNombre()));
-		ObservableList<Doctor> arrayList = FXCollections.observableArrayList();
-		for (Doctor doctor : ModelFactoryController.getInstance().getDoctors())
-			arrayList.add(doctor);
+		updateTable();
+	}
+
+	private void updateTable() {
+		ObservableList<Doctor> arrayList = FXCollections
+				.observableArrayList(ModelFactoryController.getInstance().getDoctors().toList());
 		tblDoctores.setItems(arrayList);
+		tblDoctores.refresh();
 	}
 
 }

@@ -4,7 +4,6 @@ import static co.edu.uniquindio.eps_uq.dao.EpsDao.load;
 import static co.edu.uniquindio.eps_uq.dao.EpsDao.save;
 
 import java.time.Duration;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -17,7 +16,6 @@ import co.edu.uniquindio.eps_uq.model.Request;
 import co.edu.uniquindio.eps_uq.model.User;
 import co.edu.uniquindio.eps_uq.structures.LinkedList;
 import co.edu.uniquindio.eps_uq.structures.PriorityQueue;
-import javafx.util.Callback;
 
 public class ModelFactoryController {
 	private static ModelFactoryController instance;
@@ -31,7 +29,6 @@ public class ModelFactoryController {
 	}
 
 	private ModelFactoryController() {
-		// chambonada
 		this.eps = load();
 	}
 
@@ -40,11 +37,13 @@ public class ModelFactoryController {
 		return eps.getRequestsQueue();
 	}
 
-	public void addRequest(User user, PriorityLevel priorityLevel, Doctor doctor, String detail) {
+	public void addRequest(User user, PriorityLevel priorityLevel, Doctor doctor, String detail, Duration duration) {
 		Request request = Request.builder().id(UUID.randomUUID().toString()).user(user).priorityLevel(priorityLevel)
-				.doctor(doctor).detail(detail).build();
+				.doctor(doctor).detail(detail).duration(duration).build();
 		eps = load();
+		eps.getRequestsQueue().print();
 		eps.addRequest(request);
+		eps.getRequestsQueue().print();
 		save(eps);
 
 	}
@@ -106,15 +105,20 @@ public class ModelFactoryController {
 	
 	public List<Appointment> getAppointments(){
 		eps= load();
-		save(eps);
+		eps.getAppointments().print();
 		return eps.getAppointments().toList();
 	}
 
 	public List<User> getUsers(){
 		eps = load();
-		save(eps);
-		eps.getUsersList().print();
-		System.out.println(eps.getUsersList().toList());
 		return eps.getUsersList().toList();
+	}
+
+	public void createAppointmentsFromRequests() {
+		eps = load();
+		eps.getRequestsQueue().print();
+		eps.createAppointmentsFromRequests();
+		eps.getRequestsQueue().print();
+		save(eps);
 	}
 }

@@ -81,18 +81,20 @@ public class MainMenuController implements Initializable {
 
 	public void mostrarCapa(Parent persp) {
 		if (fade == null)
-			fade = new FadeTransition(Duration.millis(100), secondLayer);
+			fade = new FadeTransition(Duration.millis(200), secondLayer);
 		secondLayer.setDisable(false);
 		secondLayerInner.setCenter(persp);
 		fade.setFromValue(0);
 		fade.setToValue(1);
+		fade.setOnFinished(e -> {
+		});
 		fade.playFromStart();
 
 	}
 
 	public void ocultarCapa() {
 		if (fade == null)
-			fade = new FadeTransition(Duration.millis(100), secondLayer);
+			fade = new FadeTransition(Duration.millis(200), secondLayer);
 		fade.setFromValue(1);
 		fade.setToValue(0);
 		fade.setOnFinished(e -> {
